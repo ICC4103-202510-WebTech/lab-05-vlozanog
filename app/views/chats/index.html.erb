@@ -1,0 +1,19 @@
+<h1 class="text-center">Chats</h1>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>Sender ID</th>
+                <th>Receiver ID</th>
+                <th>Details</th>
+            </tr>
+            <% @chats.each do |chat|%>
+                <tr>
+                    <td><%= chat.sender_id %></td>
+                    <td><%= chat.receiver_id %></td>
+                    <td><%= link_to("Details", chat_path(chat)) %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+</div>

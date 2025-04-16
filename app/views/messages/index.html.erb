@@ -1,0 +1,22 @@
+<h1 class="text-center">Messages</h1>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>Chat ID</th>
+                <th>User ID</th>
+                <th>Body</th>
+                <th>Details</th>
+            </tr>
+            <% @messages.each do |message|%>
+                <tr>
+                    <td><%= message.chat_id %></td>
+                    <td><%= message.user_id %></td>
+                    <td><%= message.body %></td>
+                    <td><%= link_to("Details", message_path(message)) %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
+

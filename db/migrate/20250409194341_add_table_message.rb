@@ -1,8 +1,8 @@
 class AddTableMessage < ActiveRecord::Migration[8.0]
   def change
     create_table :messages do |t|
-      t.integer :chat_id, null: false
-      t.integer :user_id, null: false
+      t.references :chat, foreign_key: true, null: false
+      t.references :user, foreign_key: true, null: false
       t.text :body, null: false
 
       t.timestamps

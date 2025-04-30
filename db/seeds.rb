@@ -32,18 +32,25 @@ characters.each_with_index do |char|
         last_name: char[:last_name]
     )
 end
+users = User.all
 
-10.times do |i|
+10.times do
+    sender = users.sample
+    receiver = users.where.not(id: sender.id).sample 
+  
     Chat.create!(
-        sender_id: i + 1,
-        receiver_id: i * 10,
+      sender_id: sender.id,
+      receiver_id: receiver.id,
     )
 end
 
+chats = Chat.all
 10.times do |i|
+    chat = chats.sample
+    user = chat.sender
     Message.create!(
-        chat_id: i,
-        user_id: i * 2,
-        body: "Message #{i + 1}",
+        chat_id: chat.id,
+        user_id: user.id,
+        body: "Message body #{i+1}",
     )
 end

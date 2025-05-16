@@ -1,21 +1,21 @@
 <div class="container mt-4">
-  <h1 class="text-center mb-4">New Chat</h1>
+  <h1 class="text-center mb-4">Edit Chat</h1>
 
   <div class="d-flex justify-content-center">
     <div class="card p-4">
       <%= form_with(model: @chat, local: true) do |f| %>
         <div class="mb-3">
           <%= f.label :sender_id, "Sender", class: "form-label fw-bold" %>
-          <%= f.select :sender_id, User.all.collect { |u| ["#{u.first_name} #{u.last_name}", u.id] }, prompt: "Select sender" %>
+          <%= f.select :sender_id, User.all.collect { |u| ["#{u.first_name} #{u.last_name}", u.id] }, { prompt: "Select sender" }, class: "form-select" %>
         </div>
 
         <div class="mb-3">
           <%= f.label :receiver_id, "Receiver", class: "form-label fw-bold" %>
-          <%= f.select :receiver_id, User.all.collect { |u| ["#{u.first_name} #{u.last_name}", u.id] }, prompt: "Select receiver" %>
+          <%= f.select :receiver_id, User.all.collect { |u| ["#{u.first_name} #{u.last_name}", u.id] }, { prompt: "Select receiver" }, class: "form-select" %>
         </div>
 
         <div class="text-center">
-          <%= f.submit "Create Chat", class: "btn btn-danger" %>
+          <%= f.submit "Update Chat", class: "btn btn-primary" %>
         </div>
       <% end %>
       <div class="text-center mt-3">

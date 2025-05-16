@@ -7,6 +7,7 @@
                 <th>User ID</th>
                 <th>Body</th>
                 <th>Details</th>
+                <th>Edit</th>
             </tr>
             <% @messages.each do |message|%>
                 <tr>
@@ -14,9 +15,13 @@
                     <td><%= message.user_id %></td>
                     <td><%= message.body %></td>
                     <td><%= link_to("Details", message_path(message)) %></td>
+                    <td><%= link_to 'Edit', edit_message_path(message), class: 'btn btn-sm btn-primary' %></td>
                 </tr>
             <% end %>
         </table>
+        <div class="text-center mt-4">
+            <%= link_to 'New Message', new_message_path, class: 'btn btn-danger' %>
+        </div>
     </div>
 </div>
 

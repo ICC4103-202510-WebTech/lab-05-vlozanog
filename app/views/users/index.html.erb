@@ -6,16 +6,23 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
+                <th>Messages Sent</th>
                 <th>Details</th>
+                <th>Edit</th>
             </tr>
             <% @users.each do |user|%>
                 <tr>
                     <td><%= user.first_name %></td>
                     <td><%= user.last_name %></td>
                     <td><%= user.email %></td>
+                    <td><%= user.messages.count %></td>
                     <td><%= link_to("Details", user_path(user)) %></td>
+                    <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-primary' %></td>
                 </tr>
             <% end %>
         </table>
+        <div class="text-center mt-4">
+            <%= link_to 'New User', new_user_path, class: 'btn btn-danger' %>
+        </div>
     </div>
 </div>

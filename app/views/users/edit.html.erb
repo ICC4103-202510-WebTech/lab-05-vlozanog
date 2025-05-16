@@ -1,5 +1,5 @@
 <div class="container mt-4">
-  <h1 class="text-center mb-4">New User</h1>
+  <h1 class="text-center mb-4">Edit User</h1>
 
   <div class="d-flex justify-content-center">
     <div class="card p-4">
@@ -20,11 +20,11 @@
         </div>
 
         <div class="text-center">
-          <%= form.submit "Create User", class: "btn btn-danger" %>
+          <%= form.submit "Update User", class: "btn btn-primary" %>
         </div>
       <% end %>
       <div class="text-center mt-3">
-        <%= link_to 'All Users', users_path, class: "btn btn-secondary" %>
+        <%= link_to 'Back to Users', users_path, class: "btn btn-secondary" %>
       </div>
     </div>
   </div>

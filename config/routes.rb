@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   #get "massage/index"
   #get "massage/show"
   #get "chat/index"
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root "users#index"
+
   resources :users
   resources :chats
   resources :messages

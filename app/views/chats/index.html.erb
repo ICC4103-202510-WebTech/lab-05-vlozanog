@@ -6,19 +6,25 @@
                 <th>Sender ID</th>
                 <th>Receiver ID</th>
                 <th>Details</th>
-                <th>Edit</th>
+                <% if user_signed_in? %>
+                    <th>Edit</th>
+                <% end %>
             </tr>
             <% @chats.each do |chat|%>
                 <tr>
                     <td><%= chat.sender_id %></td>
                     <td><%= chat.receiver_id %></td>
                     <td><%= link_to("Details", chat_path(chat)) %></td>
-                    <td><%= link_to 'Edit', edit_chat_path(chat), class: 'btn btn-sm btn-primary' %></td>
+                    <% if user_signed_in? %>
+                        <td><%= link_to 'Edit', edit_chat_path(chat), class: 'btn btn-sm btn-primary' %></td>
+                    <% end %>
                 </tr>
             <% end %>
         </table>
-        <div class="text-center mt-4">
-            <%= link_to 'New Chat', new_chat_path, class: 'btn btn-danger' %>
-        </div>
+        <% if user_signed_in? %>
+            <div class="text-center mt-4">
+                <%= link_to 'New Chat', new_chat_path, class: 'btn btn-danger' %>
+            </div>
+        <% end %>
     </div>
 </div>

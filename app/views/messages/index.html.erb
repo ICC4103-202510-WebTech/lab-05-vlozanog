@@ -17,7 +17,7 @@
                     <td><%= message.user_id %></td>
                     <td><%= message.body %></td>
                     <td><%= link_to("Details", message_path(message)) %></td>
-                    <% if user_signed_in? %>
+                    <% if can? :edit, message %>
                         <td><%= link_to 'Edit', edit_message_path(message), class: 'btn btn-sm btn-primary' %></td>
                     <% end %>
                 </tr>

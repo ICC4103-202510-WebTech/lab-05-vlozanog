@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :redirect_unless_admin, only: [:index]
+  load_and_authorize_resource
+
   def index
     @users = User.all
   end
@@ -42,7 +46,13 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-  params.require(:user).permit(:first_name, :last_name, :email)
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email)
+    end
+
+    def redirect_unless_admin
+      unless current_user.admin?
+        redirect_to root_path, alert: 'Access denied.'
+    end
   end
 end

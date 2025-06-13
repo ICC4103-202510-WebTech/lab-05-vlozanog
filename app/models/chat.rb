@@ -7,6 +7,14 @@ class Chat < ApplicationRecord
   validates :sender_id, presence: true
   validates :receiver_id, presence: true
 
+  scope :user_can_see, ->(user) {
+    where("sender_id = ? OR receiver_id = ?", user.id, user.id)
+  }
+
+  def other_user(current_user)
+    sender == current_user ? receiver : sender
+  end
+
   private
   def sender_and_receiver_must_be_different
     if receiver_id == sender_id

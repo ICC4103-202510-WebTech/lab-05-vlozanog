@@ -1,8 +1,9 @@
 class ChatsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def index
-    @chats = Chat.all
+    @chats = Chat.user_can_see(current_user)
   end
 
   def show

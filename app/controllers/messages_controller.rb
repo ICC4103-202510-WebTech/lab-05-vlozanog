@@ -34,6 +34,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+    redirect_to messages_path, notice: 'Message deleted successfully.'
+  end
+
   private
   def message_params
     params.require(:message).permit(:chat_id, :user_id, :body)
